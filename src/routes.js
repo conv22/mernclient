@@ -1,6 +1,6 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
-import LoginPage from './Pages/LoginPage';
-import RegisterPage from './Pages/RegisterPage';
+import LoginPage from './Pages/Authentication/LoginPage';
+import RegisterPage from './Pages/Authentication/RegisterPage';
 const useRoutes = isAuthenticated => {
 	if (!isAuthenticated) {
 		return (

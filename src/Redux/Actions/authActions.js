@@ -30,6 +30,8 @@ export const login = info => async dispatch => {
 		}
 		return response.data;
 	} catch (err) {
+		console.log(err);
+		console.log(err.response);
 		dispatch({ type: LOGIN_ERROR });
 		dispatch(
 			returnErrors(
