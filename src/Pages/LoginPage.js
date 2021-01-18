@@ -1,23 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import useHttp from './../hooks/http.hook';
 import Loader from './../Components/Loader';
+import { useDispatch } from 'react-redux';
+import { login } from './../Redux/Actions/authActions';
 
 function LoginPage() {
+	const dispatch = useDispatch();
 	const [form, setForm] = useState({ email: '', password: '' });
-	const { request, loading, error } = useHttp();
 	useEffect(() => window.M.updateTextFields(), []);
 
 	const changeHandler = e =>
 		setForm({ ...form, [e.target.name]: e.target.value });
 
-	const loginHandler = async () => {
-		const data = await request('/auth/login', 'POST', { ...form });
-		console.log(data);
+	const loginHandler = e => {
+		dispatch(login({ ...form }));
 	};
 
-	if (loading) {
-		return <Loader />;
-	}
 	return (
 		<div className='row'>
 			<div className='col s8 offset-s2'>
@@ -32,6 +30,7 @@ function LoginPage() {
 									id='email'
 									placeholder='Email'
 									onChange={changeHandler}
+									required
 								/>
 								<label htmlFor='email'>Enter your email</label>
 							</div>
@@ -44,6 +43,7 @@ function LoginPage() {
 									id='password'
 									placeholder='Password'
 									onChange={changeHandler}
+									required
 								/>
 								<label htmlFor='password'>Enter your password</label>
 							</div>

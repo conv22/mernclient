@@ -1,11 +1,13 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import useRoutes from './routes';
+import { useSelector } from 'react-redux';
+import Navbar from './Components/Navbar';
 import 'materialize-css';
 import './App.css';
-import useRoutes from './routes';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Navbar from './Components/Navbar';
 function App() {
-	const routes = useRoutes(false);
+	const isAuthenticated = useSelector(state => state.user.isAuthenticated);
+	const routes = useRoutes(isAuthenticated);
 	return (
 		<Router>
 			<Navbar />
