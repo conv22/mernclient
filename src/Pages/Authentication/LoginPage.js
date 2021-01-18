@@ -13,6 +13,8 @@ function LoginPage() {
 	const error = useSelector(state => state.error);
 	const [form, setForm] = useState({ email: '', password: '' });
 
+	// Form handlers
+
 	const changeHandler = e =>
 		setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -21,6 +23,7 @@ function LoginPage() {
 		clearErrors();
 		dispatch(login(form));
 	};
+	//
 
 	//Client validation
 	const createError = text => {
@@ -49,7 +52,7 @@ function LoginPage() {
 				<div className='card'>
 					<div className='card-content'>
 						<span className='card-title center-align blue-text'>Login</span>
-						<Form>
+						<Form onSubmit={loginHandler}>
 							<div className='row'>
 								{error.id === 'LOGIN ERROR' ? createError(error.message) : null}
 								<div className='input-field col s8 offset-s2 '>
@@ -59,6 +62,7 @@ function LoginPage() {
 										id='email'
 										placeholder='Email'
 										onChange={changeHandler}
+										value={form.email}
 										validations={[email, required]}
 									/>
 									<label htmlFor='email' className='active'>

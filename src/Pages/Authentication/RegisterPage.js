@@ -5,7 +5,7 @@ import validator from 'validator';
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
-
+import './materialize-alert.css';
 import { clearErrors } from '../../Redux/Actions/errorActions';
 
 function RegisterPage() {
@@ -21,6 +21,7 @@ function RegisterPage() {
 	//Form handlers
 
 	const registerHandler = e => {
+		e.preventDefault();
 		clearErrors();
 		dispatch(register(form));
 	};
@@ -40,19 +41,19 @@ function RegisterPage() {
 
 	const email = value => {
 		if (!validator.isEmail(value)) {
-			createError('Enter valid email');
+			return createError('Enter valid email');
 		}
 	};
 
 	const required = value => {
 		if (!value.toString().trim().length) {
-			createError('This field is required');
+			return createError('This field is required');
 		}
 	};
 
 	const minlength = value => {
 		if (value.length < 6) {
-			createError('Should be at least 6 chars long');
+			return createError('Should be at least 6 chars long');
 		}
 	};
 	const confirmPassword = (value, props, components) => {
@@ -68,7 +69,7 @@ function RegisterPage() {
 				<div className='card'>
 					<div className='card-content white-text'>
 						<span className='card-title  center-align blue-text'>Register</span>
-						<Form>
+						<Form onSubmit={registerHandler}>
 							<div className='row'>
 								{error.id === 'REGISTER ERROR'
 									? createError(error.message)
@@ -80,6 +81,7 @@ function RegisterPage() {
 										name='username'
 										type='text'
 										className='validate'
+										value={form.username}
 										onChange={changeHandler}
 										validations={[required, minlength]}
 									/>
@@ -96,8 +98,9 @@ function RegisterPage() {
 										name='password'
 										type='password'
 										className='validate'
+										value={form.password}
 										onChange={changeHandler}
-										validations={[required, minlength]}
+										validations={[minlength, required]}
 									/>
 									<label htmlFor='password' className='active'>
 										Password
@@ -112,6 +115,7 @@ function RegisterPage() {
 										name='cpassword'
 										type='password'
 										className='validate'
+										value={form.cpassword}
 										onChange={changeHandler}
 										validations={[required, confirmPassword]}
 									/>
@@ -129,7 +133,8 @@ function RegisterPage() {
 										type='email'
 										className='validate'
 										onChange={changeHandler}
-										validations={[required, email]}
+										value={form.email}
+										validations={[email, required]}
 									/>
 									<label htmlFor='email' className='active'>
 										Email
@@ -138,10 +143,7 @@ function RegisterPage() {
 							</div>
 
 							<div className='row' style={{ textAlign: 'center' }}>
-								<CheckButton
-									className='btn btn-large blue lighten-2'
-									onClick={registerHandler}
-								>
+								<CheckButton className='btn btn-large blue lighten-2'>
 									Register
 								</CheckButton>
 							</div>
