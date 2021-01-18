@@ -14,7 +14,6 @@ function MainPage() {
 		} catch (err) {}
 	}, [request]);
 	useEffect(() => {
-		console.log(1);
 		loadData();
 	}, [loadData]);
 

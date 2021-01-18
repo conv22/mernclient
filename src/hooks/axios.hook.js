@@ -20,9 +20,11 @@ export const useAxios = () => {
 			if (!res.ok) {
 				throw new Error(res.data.message || 'Something went wrong');
 			}
+			return res;
 		} catch (err) {
 			setLoading(false);
 			setError(err.response);
+			throw err;
 		}
 	}, []);
 	const clearErrors = useCallback(() => setError(null), []);
