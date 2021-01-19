@@ -17,13 +17,13 @@ export const useAxios = () => {
 			};
 			let res = await axios(config);
 			setLoading(false);
-			if (!res.ok) {
-				throw new Error(res.data.message || 'Something went wrong');
-			}
 			return res;
 		} catch (err) {
 			setLoading(false);
 			setError(err.response);
+			if (err.response.status === 401) {
+				localStorage.removeItem('user');
+			}
 			throw err;
 		}
 	}, []);

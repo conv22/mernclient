@@ -17,6 +17,7 @@ const useRoutes = isAuthenticated => {
 		<Switch>
 			<Route path='/' exact component={MainPage} />
 			<Route path='/profile' exact component={ProfilePage} />
+			{/* <Route path='/comments/:id' component={CommentPage} /> */}
 			<Redirect to='/' />
 		</Switch>
 	);
