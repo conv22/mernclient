@@ -45,7 +45,15 @@ export const login = info => async dispatch => {
 
 export const register = info => async dispatch => {
 	try {
-		const response = await axios.post(API_REGISTER, { ...info });
+		const config = {
+			method: 'post',
+			url: API_REGISTER,
+			data: info,
+		};
+		if (info.file) {
+			config.headers['Content-type'] = 'multipart/form-data';
+		}
+		const response = axios(config);
 	} catch (err) {
 		console.log(err);
 		dispatch({ type: REGISTER_ERROR });

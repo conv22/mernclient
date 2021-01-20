@@ -16,14 +16,16 @@ export const useAxios = () => {
 				headers: authHeader(),
 			};
 			let res = await axios(config);
+			console.log(res);
 			setLoading(false);
 			return res;
 		} catch (err) {
-			setLoading(false);
-			setError(err.response);
 			if (err.response.status === 401) {
 				localStorage.removeItem('user');
 			}
+			setLoading(false);
+			setError(err.response);
+
 			throw err;
 		}
 	}, []);

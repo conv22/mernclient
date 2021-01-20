@@ -2,24 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { useAxios } from './../hooks/axios.hook';
 import Post from './../Components/Post';
 import Loader from '../Components/Loader';
+import SideNav from '../Components/SideNav';
 
 function MainPage() {
 	const [posts, setPosts] = useState([]);
 	const { error, loading, request } = useAxios();
 
 	useEffect(() => {
+		const loadData = async () => {
+			const res = await request('/main', 'get', null);
+			const data = res.data;
+			setPosts(data);
+		};
 		loadData();
-	}, []);
+	}, [request]);
 
-	const loadData = async () => {
-		const res = await request('/main', 'get', null);
-		const data = res.data;
-		setPosts(data);
-		console.log(posts);
-	};
 	const listItems = posts.map(post => {
 		return (
-			<li style={{ listStyle: 'none' }} key={post._id}>
+			<li key={post._id}>
 				<Post post={post} />{' '}
 			</li>
 		);

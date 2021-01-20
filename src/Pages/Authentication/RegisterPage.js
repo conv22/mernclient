@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../Redux/Actions/authActions';
-import validator from 'validator';
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
-import './materialize-alert.css';
 import { clearErrors } from '../../Redux/Actions/errorActions';
+import {
+	createError,
+	email,
+	required,
+	minlength,
+	confirmPassword,
+} from './Validation';
+import './materialize-alert.css';
 
 function RegisterPage() {
 	const dispatch = useDispatch();
@@ -17,51 +23,23 @@ function RegisterPage() {
 		password: '',
 		cpassword: '',
 	});
+	const [file, setFile] = useState(null);
 
 	//Form handlers
 
 	const registerHandler = e => {
 		e.preventDefault();
+		const data = new FormData();
+		for (let input in form) {
+			data.append(input, form[input]);
+		}
+		data.append('file', file);
 		clearErrors();
-		dispatch(register(form));
+		dispatch(register(data));
 	};
 	const changeHandler = e => {
 		setForm({ ...form, [e.target.name]: e.target.value });
 	};
-
-	//Client validation
-	const createError = text => {
-		return (
-			<div className='materialert error'>
-				<div className='material-icons'>error_outline</div>
-				{text}
-			</div>
-		);
-	};
-
-	const email = value => {
-		if (!validator.isEmail(value)) {
-			return createError('Enter valid email');
-		}
-	};
-
-	const required = value => {
-		if (!value.toString().trim().length) {
-			return createError('This field is required');
-		}
-	};
-
-	const minlength = value => {
-		if (value.length < 6) {
-			return createError('Should be at least 6 chars long');
-		}
-	};
-	const confirmPassword = (value, props, components) => {
-		if (value !== components['password'][0].value) {
-			return createError('Password should match');
-		}
-	};
-	//
 
 	return (
 		<div className='row'>
@@ -139,6 +117,21 @@ function RegisterPage() {
 									<label htmlFor='email' className='active'>
 										Email
 									</label>
+								</div>
+							</div>
+							<div className='row'>
+								<div className='file-field input-field col s6 offset-s3'>
+									<div className='btn'>
+										<span>Avatar</span>
+										<Input
+											type='file'
+											name='file'
+											onChange={e => setFile(e.target.files[0])}
+										/>
+									</div>
+									<div className='file-path-wrapper'>
+										<input className='file-path validate' type='text' />
+									</div>
 								</div>
 							</div>
 

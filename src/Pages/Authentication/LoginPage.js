@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors } from './../../Redux/Actions/errorActions';
 import { login } from '../../Redux/Actions/authActions';
-import validator from 'validator';
+import { createError, email, required } from './Validation';
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
@@ -24,27 +24,6 @@ function LoginPage() {
 		dispatch(login(form));
 	};
 	//
-
-	//Client validation
-	const createError = text => {
-		return (
-			<div className='materialert error'>
-				<div className='material-icons'>error_outline</div>
-				{text}
-			</div>
-		);
-	};
-
-	const email = value => {
-		if (!validator.isEmail(value)) {
-			return createError('Enter valid email');
-		}
-	};
-	const required = value => {
-		if (!value.toString().trim().length) {
-			return createError('This field is required');
-		}
-	};
 
 	return (
 		<div className='row'>
