@@ -6,9 +6,8 @@ function Post({ post }) {
 
 	const likePost = async id => {
 		try {
-			console.log(post.likes);
-			const x = await request(`/main/${id}/like`, 'post', null);
-			return x;
+			const like = await request(`/main/${id}/like`, 'post', null);
+			return like;
 		} catch (e) {}
 	};
 
@@ -17,10 +16,11 @@ function Post({ post }) {
 			<div className='col s12 m6 offset-m3'>
 				<div className='card'>
 					<div className='card-title center-align grey lighten-3'>
-						{post.title}
+						<a href={`/post/${post._id}`}>{post.title} </a>
 					</div>
-					<div className='card-content'>
-						<p>{post.text}</p>
+					<div className='card-image'>
+						{' '}
+						<img src={post.imageUrl} />{' '}
 					</div>
 					<div className='card-action grey lighten-3' style={styles.cardAction}>
 						<a href={`/comments/${post._id}`}>

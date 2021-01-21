@@ -24,7 +24,7 @@ export const useAxios = () => {
 				localStorage.removeItem('user');
 			}
 			setLoading(false);
-			setError(err.response);
+			setError(err.response.message);
 
 			throw err;
 		}

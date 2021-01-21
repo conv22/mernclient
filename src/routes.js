@@ -4,6 +4,7 @@ import RegisterPage from './Pages/Authentication/RegisterPage';
 import MainPage from './Pages/MainPage';
 import ProfilePage from './Pages/ProfilePage';
 import CreatePost from './Pages/CreatePost';
+import PostPage from './Pages/PostPage';
 const useRoutes = isAuthenticated => {
 	if (!isAuthenticated) {
 		return (
@@ -18,7 +19,7 @@ const useRoutes = isAuthenticated => {
 		<Switch>
 			<Route path='/' exact component={MainPage} />
 			<Route path='/profile' exact component={ProfilePage} />
-			{/* <Route path='/comments/:id' component={CommentPage} /> */}
+			<Route path='/post/:id' component={PostPage} />
 			<Route path='/create-post' exact component={CreatePost} />
 			<Redirect to='/' />
 		</Switch>

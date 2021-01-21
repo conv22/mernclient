@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Loader from '../Components/Loader';
-import UserCard from '../Components/UserCard';
-import UserPosts from '../Components/UserPosts';
+import Loader from '../Components/General/Loader';
+import UserCard from '../Components/UserComponents/UserCard';
+import UserPosts from '../Components/UserComponents/UserPosts';
 import { useAxios } from './../hooks/axios.hook';
 
 function ProfilePage() {
