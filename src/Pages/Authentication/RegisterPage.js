@@ -121,7 +121,7 @@ function RegisterPage() {
 							</div>
 							<div className='row'>
 								<div className='file-field input-field col s6 offset-s3'>
-									<div className='btn'>
+									<div className='btn blue lighten-2'>
 										<span>Avatar</span>
 										<Input
 											type='file'

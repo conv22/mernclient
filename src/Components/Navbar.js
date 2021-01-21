@@ -29,6 +29,11 @@ function Navbar() {
 					<NavLink to='/profile'>Profile</NavLink>
 				</li>
 				<li>
+					<NavLink to='/create-post'>
+						<i className='material-icons'>add</i>
+					</NavLink>
+				</li>
+				<li>
 					<a href='/logout' onClick={dispatch(logout)}>
 						Log out
 					</a>
