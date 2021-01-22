@@ -29,6 +29,9 @@ img {
 	bottom: 0;
 	margin: auto;
 }
+.user-post-img {
+	width: 100%;
+}
 
 li {
 	list-style: none;

@@ -23,8 +23,8 @@ function Post({ post }) {
 						<img src={post.imageUrl} />{' '}
 					</div>
 					<div className='card-action grey lighten-3' style={styles.cardAction}>
-						<a href={`/comments/${post._id}`}>
-							Comments {post.comments.length}
+						<a href={`/users/${post.owner._id}`}>
+							Posted by {post.owner.username}
 						</a>
 						<div className='icon-div' style={styles.iconDiv}>
 							<i

@@ -4,7 +4,7 @@ function UserPosts({ post }) {
 	return (
 		<div className='col s4 center-align user-post'>
 			<a href={`/post/${post._id}`}>
-				<img style={{ maxWidth: '100%' }} src={post.imageUrl} />{' '}
+				<img className='user-post-img' src={post.imageUrl} />{' '}
 			</a>
 		</div>
 	);

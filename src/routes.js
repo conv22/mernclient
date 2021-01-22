@@ -5,6 +5,7 @@ import MainPage from './Pages/MainPage';
 import ProfilePage from './Pages/ProfilePage';
 import CreatePost from './Pages/CreatePost';
 import PostPage from './Pages/PostPage';
+import UserPage from './Pages/UserPage';
 const useRoutes = isAuthenticated => {
 	if (!isAuthenticated) {
 		return (
@@ -21,6 +22,7 @@ const useRoutes = isAuthenticated => {
 			<Route path='/profile' exact component={ProfilePage} />
 			<Route path='/post/:id' component={PostPage} />
 			<Route path='/create-post' exact component={CreatePost} />
+			<Route path='/users/:id' component={UserPage} />
 			<Redirect to='/' />
 		</Switch>
 	);
