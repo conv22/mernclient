@@ -14,9 +14,17 @@
 }
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5 {
 	margin: 0;
 	padding: 0;
+}
+* {
+	box-sizing: border-box;
+}
+li {
+	list-style: none;
 }
 img {
 	width: 100%;
@@ -29,17 +37,26 @@ img {
 	bottom: 0;
 	margin: auto;
 }
+/** User styling */
 .user-post-img {
 	width: 100%;
 }
-
-li {
-	list-style: none;
+er-post-img {
+	width: 100%;
 }
+.user-avi {
+	width: 100%;
+}
+.user-card {
+	margin-top: 20px;
+}
+
 .user-post {
+	box-shadow: 0px -3px 3px 1px rgba(0, 0, 0, 0.52);
 	margin-bottom: 30px;
+	min-height: 50vh;
 }
 
-.profile-image {
-	max-width: 300px;
+/** Messager styles */
+.messager {
 }

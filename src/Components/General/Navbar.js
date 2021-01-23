@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { logout } from './../../Redux/Actions/authActions';
 import { useDispatch, useSelector } from 'react-redux';
@@ -34,7 +34,20 @@ function Navbar() {
 					</NavLink>
 				</li>
 				<li>
-					<a href='/logout' onClick={dispatch(logout)}>
+					<NavLink to='/messager'>
+						<i className='material-icons'>message</i>
+					</NavLink>
+				</li>
+				<li>
+					<NavLink to='/friends'>Friends</NavLink>
+				</li>
+				<li>
+					<a
+						href='/logout'
+						onClick={() => {
+							dispatch({ type: 'LOGOUT' });
+						}}
+					>
 						Log out
 					</a>
 				</li>

@@ -2,7 +2,6 @@ import { useState, useCallback } from 'react';
 import axios from 'axios';
 import authHeader from '../_helpers/auth-header';
 import { useDispatch } from 'react-redux';
-import { logout } from './../Redux/Actions/authActions';
 
 export const useAxios = () => {
 	const dispatch = useDispatch();
@@ -24,7 +23,7 @@ export const useAxios = () => {
 				return res;
 			} catch (err) {
 				if (err.response.status === 401) {
-					dispatch(logout);
+					dispatch({ type: 'LOGOUT' });
 				}
 				setLoading(false);
 				setError(err.response.message);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Loader from '../Components/General/Loader';
-import UserCard from '../Components/UserComponents/UserCard';
+import ProfileCard from '../Components/UserComponents/ProfileCard';
 import UserPosts from '../Components/UserComponents/UserPosts';
 import { useAxios } from './../hooks/axios.hook';
 
@@ -23,9 +23,9 @@ function ProfilePage() {
 	}
 	return (
 		<div>
-			<UserCard user={user} />
+			<ProfileCard user={user} />
 			{posts.length > 0 ? (
-				<div className='row'>
+				<div className='row user-post'>
 					<ul>
 						{posts.map(post => (
 							<li key={post._id}>

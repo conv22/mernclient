@@ -68,6 +68,5 @@ export const register = info => async dispatch => {
 };
 
 export const logout = () => dispatch => {
-	localStorage.removeItem('user');
 	dispatch({ type: LOGOUT });
 };
