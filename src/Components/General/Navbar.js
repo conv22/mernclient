@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { logout } from './../../Redux/Actions/authActions';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Navbar() {

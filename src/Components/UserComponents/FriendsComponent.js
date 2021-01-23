@@ -3,7 +3,7 @@ import { useAxios } from '../../hooks/axios.hook';
 function FriendsComponent({ friends }) {
 	const { request } = useAxios();
 	const deleteFriend = async id => {
-		const response = await request(`/main/${id}/deleteFriend`, 'post', null);
+		const response = await request(`/main/${id}/deleteFriend`, 'delete', null);
 		return response;
 	};
 	return (

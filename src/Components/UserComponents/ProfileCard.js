@@ -13,7 +13,7 @@ function UserCard({ user }) {
 				<h6>Email: {user.email}</h6>
 			</div>
 			{user.friendRequests ? (
-				<div className='col s4 user-friends'>
+				<div className='col s4 user-friends hide-on-med-and-down'>
 					<h5>Latest friend requests</h5>
 					<FriendRequestsComponent friends={user.friendRequests} />{' '}
 				</div>

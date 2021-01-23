@@ -8,6 +8,8 @@ import PostPage from './Pages/PostPage';
 import UserPage from './Pages/UserPage';
 import MessagerPage from './Pages/MessagerPage';
 import FriendPage from './Pages/FriendPage';
+import GlobalUserPage from './Pages/GlobalUserPage';
+import SideNav from './Components/General/SideNav';
 const useRoutes = isAuthenticated => {
 	if (!isAuthenticated) {
 		return (
@@ -27,6 +29,8 @@ const useRoutes = isAuthenticated => {
 			<Route path='/users/:id' component={UserPage} />
 			<Route path='/messager' exact component={MessagerPage} />
 			<Route path='/friends' exact component={FriendPage} />
+			<Route path='/users' exact component={GlobalUserPage} />
+			<Route path='/blank' component={SideNav} />
 			<Redirect to='/' />
 		</Switch>
 	);

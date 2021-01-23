@@ -3,6 +3,7 @@ import { useAxios } from './../hooks/axios.hook';
 import Post from './../Components/Post';
 import Loader from '../Components/General/Loader';
 import Pagination from '../Components/General/Pagination';
+import SideNav from '../Components/General/SideNav';
 
 function MainPage() {
 	const [posts, setPosts] = useState([]);
@@ -26,22 +27,25 @@ function MainPage() {
 	if (error) {
 		return <div>{error}</div>;
 	}
-	if (posts.length > 0 && !error)
+	if (posts.length > 0)
 		return (
-			<div>
-				{posts.map(post => {
-					return (
-						<li key={post._id}>
-							<Post post={post} />
-						</li>
-					);
-				})}
-				<Pagination
-					currentPage={currentPage}
-					setCurrentPage={setCurrentPage}
-					totalPages={totalPages}
-				/>
-			</div>
+			<>
+				<SideNav />
+				<div>
+					{posts.map(post => {
+						return (
+							<li key={post._id}>
+								<Post post={post} />
+							</li>
+						);
+					})}
+					<Pagination
+						currentPage={currentPage}
+						setCurrentPage={setCurrentPage}
+						totalPages={totalPages}
+					/>
+				</div>
+			</>
 		);
 	return <h1> Hello</h1>;
 }

@@ -57,6 +57,10 @@ er-post-img {
 	min-height: 50vh;
 }
 
-/** Messager styles */
-.messager {
+.sidenav {
+	margin-top: 65px;
+	position: fixed;
+}
+.sidenav li {
+	padding: 5px 30px;
 }

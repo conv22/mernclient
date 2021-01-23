@@ -38,7 +38,7 @@ function PostPage() {
 				</div>
 				<div className='col s6'>
 					<div className='row center-align'>
-						<div className='col s12'>
+						<div classNcame='col s12'>
 							{' '}
 							<h2>{post.title} </h2>
 						</div>
