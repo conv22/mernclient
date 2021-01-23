@@ -1,5 +1,5 @@
 import React from 'react';
-import FriendsComponent from './FriendsComponent';
+import FriendRequestsComponent from './FriendRequestsComponent';
 
 function UserCard({ user }) {
 	return (
@@ -15,7 +15,7 @@ function UserCard({ user }) {
 			{user.friendRequests ? (
 				<div className='col s4 user-friends'>
 					<h5>Latest friend requests</h5>
-					<FriendsComponent friends={user.friendRequests} />{' '}
+					<FriendRequestsComponent friends={user.friendRequests} />{' '}
 				</div>
 			) : null}
 		</div>

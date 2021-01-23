@@ -2,15 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { useAxios } from './../hooks/axios.hook';
 import { useParams } from 'react-router-dom';
 import Loader from '../Components/General/Loader';
+import Comment from '../Components/UserComponents/Comment';
 
 function PostPage() {
 	const { id } = useParams();
 	const [post, setPost] = useState(null);
+	const [comments, setComments] = useState(null);
 	const { request, error, loading } = useAxios();
 	useEffect(() => {
 		const loadData = async () => {
 			const response = await request(`/main/posts/${id}`, 'get', null);
-			setPost(response.data);
+			setPost(response.data.post);
+			setComments(response.data.comments);
 		};
 		loadData();
 	}, [id, request]);
@@ -35,7 +38,7 @@ function PostPage() {
 				</div>
 				<div className='col s6'>
 					<div className='row center-align'>
-						<div classname='col s12'>
+						<div className='col s12'>
 							{' '}
 							<h2>{post.title} </h2>
 						</div>
@@ -47,12 +50,7 @@ function PostPage() {
 					</div>
 				</div>
 			</div>
-			<div
-				className='row'
-				style={{ borderTop: '5px solid black', marginTop: '10px' }}
-			>
-				<div className='col s12'>comments</div>
-			</div>
+			<Comment comments={comments} id={id} />
 		</>
 	);
 }
