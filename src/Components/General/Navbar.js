@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Navbar() {
-  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const user = useSelector((state) => state.user);
+  useEffect(() => {
+    window.M.AutoInit();
+  }, []);
 
   const dispatch = useDispatch();
   const navRoutes = () => {
-    if (!isAuthenticated) {
+    if (!user.isAuthenticated) {
       return (
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li>
@@ -20,37 +23,54 @@ function Navbar() {
       );
     }
     return (
-      <ul id="nav-mobile" className="right hide-on-med-and-down">
-        <li>
-          <NavLink to="/">Feed</NavLink>
-        </li>
-        <li>
-          <NavLink to="/profile">Profile</NavLink>
-        </li>
-        <li>
-          <NavLink to="/create-post">
-            <i className="material-icons">add</i>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/messager">
-            <i className="material-icons">message</i>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/friends">Friends</NavLink>
-        </li>
-        <li>
-          <a
-            href="/logout"
-            onClick={() => {
-              dispatch({ type: 'LOGOUT' });
-            }}
-          >
-            Log out
-          </a>
-        </li>
-      </ul>
+      <>
+        <ul id="dropdown1" className="dropdown-content">
+          <li>
+            <NavLink to="/profile">Profile</NavLink>
+          </li>
+          <li>
+            <NavLink to="/friends">Friends</NavLink>
+          </li>
+          <li>
+            <NavLink to="/">Feed</NavLink>
+          </li>
+          <li className="divider" />
+          <li>
+            <a
+              href="/logout"
+              onClick={() => {
+                dispatch({ type: 'LOGOUT' });
+              }}
+            >
+              Log out
+            </a>
+          </li>
+        </ul>
+        <ul id="nav-mobile" className="right hide-on-med-and-down">
+          <li>
+            <NavLink to="/create-post">
+              <i className="material-icons">add</i>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/messager">
+              <i className="material-icons">message</i>
+            </NavLink>
+          </li>
+          <li>
+            <a className="dropdown-trigger" href="#!" data-target="dropdown1">
+              <div className="nav-dropdown">
+                <img
+                  src={user.avatar}
+                  alt="user-avi"
+                  className="circle nav-avi"
+                />
+                <i className="material-icons right">arrow_drop_down</i>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </>
     );
   };
 

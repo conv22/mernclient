@@ -5,11 +5,13 @@ const initialState = user
   ? {
       token: user.token,
       user: user.user,
+      avatar: user.avatar,
       isAuthenticated: true,
     }
   : {
       token: null,
       userId: null,
+      avatar: null,
       isAuthenticated: false,
     };
 
@@ -20,6 +22,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         token: action.payload.token,
         userId: action.payload.user,
+        avatar: action.payload.aviUrl,
         isAuthenticated: true,
       };
     }
@@ -30,6 +33,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         token: null,
         userId: null,
+        avatar: null,
         isAuthenticated: false,
       };
     }

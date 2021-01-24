@@ -6,12 +6,11 @@ function SideNav() {
     <ul id="nav-mobile" className="sidenav sidenav-fixed">
       <li className="search">
         <div className="search-wrapper">
-          <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div className="search-sidebar">
             <input name="search" id="search" placeholder="Search users" />
 
             <i className="material-icons">search</i>
           </div>
-
           <div className="search-results" />
         </div>
       </li>

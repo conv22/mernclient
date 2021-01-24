@@ -15,6 +15,7 @@ export const login = (info) => async (dispatch) => {
         JSON.stringify({
           token: response.data.token,
           user: response.data.user,
+          avatar: response.data.aviUrl,
         })
       );
       dispatch({

@@ -37,13 +37,56 @@ img {
   bottom: 0;
   margin: auto;
 }
+.search-sidebar {
+  display: flex;
+  align-items: center;
+}
+.nav-avi {
+  width: 35px;
+  height: 35px;
+}
+.nav-dropdown {
+  display: flex;
+  align-items: center;
+}
+/* Pagination styles */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pagination-li button {
+  background: none;
+  color: #444444;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+.pagination-li button.active {
+  background: #64b5f6;
+  color: #fff;
+}
+
+/* Nav styles */
+#dropdown1 {
+  margin-top: 30px;
+}
+
+.sidenav {
+  margin-top: 65px;
+  position: fixed;
+}
+.sidenav-fixed {
+  position: absolute !important;
+}
+.sidenav li {
+  padding: 5px 30px;
+}
 /** User styling */
 .user-post-img {
   width: 100%;
 }
-er-post-img {
-  width: 100%;
-}
+
 .user-avi {
   width: 100%;
 }
@@ -57,13 +100,7 @@ er-post-img {
   min-height: 50vh;
 }
 
-.sidenav {
-  margin-top: 65px;
-  position: fixed;
-}
-.sidenav li {
-  padding: 5px 30px;
-}
+/** Post Card */
 
 .post-icon-div {
   display: flex;
@@ -75,8 +112,18 @@ er-post-img {
   cursor: pointer;
   transition: 0.3s;
 }
+.post-icon.active {
+  color: red;
+  transform: scale(1.2);
+}
 .post-cardaction {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.post-like-btn {
+  border: 0;
+}
+.post-like-btn:focus {
+  background: none;
 }

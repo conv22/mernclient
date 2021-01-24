@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import useAxios from '../hooks/axios.hook';
 
 function Post({ post }) {
+  const [liked, setLiked] = useState(false);
+  const user = useSelector((state) => state.user);
   const { request } = useAxios();
+
+  useEffect(() => {
+    if (post.likes.some((like) => like.user === user.user)) {
+      return setLiked(true);
+    }
+    return setLiked(false);
+  }, [post, user]);
 
   const likePost = async (id) => {
     try {
       const like = await request(`/main/${id}/like`, 'post', null);
+      setLiked(!liked);
       return like;
     } catch (e) {
       return e;
@@ -29,10 +40,22 @@ function Post({ post }) {
               Posted by {post.owner.username}
             </a>
             <div className="icon-div post-icon-div">
-              <button type="button" onClick={() => likePost(post._id)}>
-                <i className="material-icons post-icon">favorite</i>
+              <button
+                type="button"
+                className="post-like-btn"
+                onClick={() => likePost(post._id)}
+              >
+                <i
+                  className={
+                    liked
+                      ? 'material-icons post-icon active'
+                      : 'material-icons post-icon'
+                  }
+                >
+                  favorite
+                </i>
               </button>
-              <span>{post.likes.length}</span>
+              <span>{liked ? post.likes.length + 1 : post.likes.length}</span>
             </div>
           </div>
         </div>
