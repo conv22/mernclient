@@ -1,53 +1,50 @@
 import React, { useEffect, useState } from 'react';
-import { useAxios } from './../hooks/axios.hook';
-import Post from './../Components/Post';
+import useAxios from '../hooks/axios.hook';
+import Post from '../Components/Post';
 import Loader from '../Components/General/Loader';
 import Pagination from '../Components/General/Pagination';
 import SideNav from '../Components/General/SideNav';
 
 function MainPage() {
-	const [posts, setPosts] = useState([]);
-	const [currentPage, setCurrentPage] = useState(0);
-	const [totalPages, setTotalPages] = useState(1);
-	const { error, loading, request } = useAxios();
+  const [posts, setPosts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(1);
+  const { error, loading, request } = useAxios();
 
-	useEffect(() => {
-		const loadData = async () => {
-			const res = await request(`/main?page=${currentPage}`, 'get', null);
-			const data = res.data;
-			setPosts(data.posts);
-			setTotalPages(data.total);
-		};
-		loadData();
-	}, [request, currentPage]);
+  useEffect(() => {
+    const loadData = async () => {
+      const response = await request(`/main?page=${currentPage}`, 'get', null);
+      setPosts(response.data.posts);
+      setTotalPages(response.data.total);
+    };
+    loadData();
+  }, [request, currentPage]);
 
-	if (loading) {
-		return <Loader />;
-	}
-	if (error) {
-		return <div>{error}</div>;
-	}
-	if (posts.length > 0)
-		return (
-			<>
-				<SideNav />
-				<div>
-					{posts.map(post => {
-						return (
-							<li key={post._id}>
-								<Post post={post} />
-							</li>
-						);
-					})}
-					<Pagination
-						currentPage={currentPage}
-						setCurrentPage={setCurrentPage}
-						totalPages={totalPages}
-					/>
-				</div>
-			</>
-		);
-	return <h1> Hello</h1>;
+  if (loading) {
+    return <Loader />;
+  }
+  if (error) {
+    return <div>{error}</div>;
+  }
+  if (posts.length > 0)
+    return (
+      <>
+        <SideNav />
+        <div>
+          {posts.map((post) => (
+            <li key={post._id}>
+              <Post post={post} />
+            </li>
+          ))}
+          <Pagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            totalPages={totalPages}
+          />
+        </div>
+      </>
+    );
+  return <h1> Hello</h1>;
 }
 
 export default MainPage;
