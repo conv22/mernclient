@@ -22,15 +22,15 @@ function FriendPage() {
   }
   return (
     <div className="row">
-      <div className="col s8">
-        <h5>Friends</h5>
+      <div className="col s10 friends-div">
+        <h4>Friends</h4>
         {friends.length > 0 ? (
           <FriendsComponent friends={friends} />
         ) : (
           <div> No friends yet </div>
         )}
       </div>
-      <div className="col s4">
+      <div className="col s2 requests-div">
         <h5>Requests</h5>
         {friendRequests.length > 0 ? (
           <FriendRequestsComponent friends={friendRequests} />

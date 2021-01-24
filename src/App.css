@@ -87,7 +87,7 @@ img {
   width: 100%;
 }
 
-.user-avi {
+.user-avi img {
   width: 100%;
 }
 .user-card {
@@ -101,7 +101,15 @@ img {
 }
 
 /** Post Card */
-
+.post-page {
+  margin-top: 30px;
+}
+.post-page-title {
+  font-size: 26px;
+}
+.post-page-p {
+  font-size: 18px;
+}
 .post-icon-div {
   display: flex;
   align-items: center;
@@ -125,5 +133,28 @@ img {
   border: 0;
 }
 .post-like-btn:focus {
+  background: none;
+}
+.comment-btn {
+  border: none;
+  background: none;
+  color: grey;
+  cursor: pointer;
+}
+.comment-btn:focus {
+  background: none;
+}
+.friends-div {
+  margin-top: 30px;
+}
+.requests-div {
+  margin-top: 30px;
+}
+.addfriend-btn {
+  color: #000;
+  border: none;
+  background: none;
+}
+.addfriend-btn:focus {
   background: none;
 }

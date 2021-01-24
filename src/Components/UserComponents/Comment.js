@@ -9,8 +9,10 @@ function Comment({ comments, id }) {
     const data = await request(`/main/posts/${id}/addComment`, 'post', {
       text,
     });
+    window.location.reload();
     return data;
   };
+
   return (
     <>
       <div className="divider" />
@@ -27,7 +29,7 @@ function Comment({ comments, id }) {
               value={text}
               onChange={(e) => setText(e.target.value)}
             />
-            <button type="button" className="btn" onClick={sendComment}>
+            <button type="submit" className="btn" onClick={sendComment}>
               <i className="material-icons">send</i>
             </button>
           </div>

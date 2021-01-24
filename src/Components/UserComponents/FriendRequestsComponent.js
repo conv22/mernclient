@@ -5,6 +5,7 @@ function FriendsComponent({ friends }) {
   const { request } = useAxios();
   const addFriend = async (id) => {
     const response = await request(`/main/${id}/addFriend`, 'post', null);
+    window.location.reload();
     return response;
   };
   return (
@@ -16,7 +17,7 @@ function FriendsComponent({ friends }) {
           <p>{friend.email}</p>
           <button
             type="button"
-            className="secondary-content"
+            className="secondary-content addfriend-btn"
             onClick={() => addFriend(friend._id)}
           >
             <i className="material-icons">add</i>

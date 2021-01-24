@@ -8,8 +8,19 @@ function UserCard({ user }) {
   const { request } = useAxios();
   const currentUser = useSelector((state) => state.user.user);
   const makeFriendRequest = async () => {
-    const data = await request(`/main/${id}/friendReq`, 'POST', null);
-    return data;
+    const response = await request(`/main/${id}/friendReq`, 'POST', null);
+    window.location.reload();
+    return response;
+  };
+  const deleteFriendRequest = async () => {
+    const response = await request(`/main/${id}/deleteRequest`, 'DELETE', null);
+    window.location.reload();
+    return response;
+  };
+  const deleteFromFriends = async () => {
+    const response = await request(`/main/${id}/deleteFriend`, 'DELETE', null);
+    window.location.reload();
+    return response;
   };
   const buttons = () => {
     if (
@@ -19,7 +30,13 @@ function UserCard({ user }) {
     ) {
       return (
         <div>
-          <button type="button">Remove from friends</button>{' '}
+          <button
+            type="button"
+            className="btn blue lighten-2"
+            onClick={deleteFromFriends}
+          >
+            Remove from friends
+          </button>{' '}
         </div>
       );
     }
@@ -30,14 +47,23 @@ function UserCard({ user }) {
     ) {
       return (
         <div>
-          <span>Request sent</span>
-          <button type="button">Remove request</button>
+          <button
+            type="button"
+            onClick={deleteFriendRequest}
+            className="btn blue lighten-2"
+          >
+            Remove request{' '}
+          </button>
         </div>
       );
     }
     return (
       <div>
-        <button type="button" onClick={makeFriendRequest}>
+        <button
+          type="button"
+          className="btn blue lighten-2"
+          onClick={makeFriendRequest}
+        >
           Make friend request
         </button>{' '}
       </div>
@@ -45,11 +71,11 @@ function UserCard({ user }) {
   };
   return (
     <div className="row user-card">
-      <div className="col s4 user-avi">
+      <div className="col s2">
         <img src={user.aviUrl} alt="user-avi" />
       </div>
 
-      <div className="col s8 user-description">
+      <div className="col s10 user-description">
         <h5>Username : {user.username}</h5>
         <h6>Email: {user.email}</h6>
         {buttons()}

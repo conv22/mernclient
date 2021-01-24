@@ -17,34 +17,26 @@ function PostPage() {
     };
     loadData();
   }, [id, request]);
+  if (loading) {
+    return <Loader />;
+  }
 
   if (post === null) {
     return null;
   }
-  if (loading) {
-    return <Loader />;
-  }
+
   if (error) {
     return <h1>{error}</h1>;
   }
   return (
     <>
-      <div className="row">
-        <div className="col s6">
-          <img src={post.imageUrl} alt="post img" />
+      <div className="row post-page">
+        <div className="col s7">
+          <img src={post.imageUrl} alt="Post" />
         </div>
-        <div className="col s6">
-          <div className="row center-align">
-            <div classNcame="col s12">
-              {' '}
-              <h2>{post.title} </h2>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col s12">
-              <p className="flow-text">{post.text}</p>
-            </div>
-          </div>
+        <div className="col s5">
+          <span className="post-page-title">{post.title}</span>
+          <p className="post-page-p">{post.text}</p>
         </div>
       </div>
       <Comment comments={comments} id={id} />

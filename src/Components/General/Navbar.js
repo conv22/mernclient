@@ -26,17 +26,24 @@ function Navbar() {
       <>
         <ul id="dropdown1" className="dropdown-content">
           <li>
-            <NavLink to="/profile">Profile</NavLink>
+            <NavLink to="/profile" className="blue-text">
+              Profile
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/friends">Friends</NavLink>
+            <NavLink to="/friends" className="blue-text">
+              Friends
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/">Feed</NavLink>
+            <NavLink to="/" className="blue-text">
+              Feed
+            </NavLink>
           </li>
           <li className="divider" />
           <li>
             <a
+              className="blue-text"
               href="/logout"
               onClick={() => {
                 dispatch({ type: 'LOGOUT' });

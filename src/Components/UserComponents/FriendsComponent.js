@@ -6,6 +6,7 @@ function FriendsComponent({ friends }) {
   const { request } = useAxios();
   const deleteFriend = async (id) => {
     const response = await request(`/main/${id}/deleteFriend`, 'delete', null);
+    window.location.reload();
     return response;
   };
   return (
@@ -17,7 +18,7 @@ function FriendsComponent({ friends }) {
           <p>{friend.email}</p>
           <button
             type="button"
-            className="secondary-content"
+            className="secondary-content addfriend-btn"
             onClick={() => deleteFriend(friend._id)}
           >
             <i className="material-icons">delete</i>

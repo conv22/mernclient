@@ -24,14 +24,18 @@ function GlobalUserPage() {
     return <h1>Error</h1>;
   }
   return (
-    <div className="row">
-      <SingleUser users={users} />
-      <Pagination
-        setCurrentPage={setCurrentPage}
-        currentPage={currentPage}
-        totalPages={totalPages}
-      />
-    </div>
+    <>
+      <div className="row">
+        <SingleUser users={users} />
+      </div>
+      <div className="row">
+        <Pagination
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+          totalPages={totalPages}
+        />
+      </div>
+    </>
   );
 }
 
