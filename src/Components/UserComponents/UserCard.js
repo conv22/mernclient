@@ -72,11 +72,11 @@ function UserCard({ user }) {
   };
   return (
     <div className="row user-card">
-      <div className="col s2">
+      <div className="col m2 s12">
         <img src={user.aviUrl} alt="user-avi" />
       </div>
 
-      <div className="col s10 user-description">
+      <div className="col m10 s12 user-description">
         <h5>Username : {user.username}</h5>
         <h6>Email: {user.email}</h6>
         {buttons()}
