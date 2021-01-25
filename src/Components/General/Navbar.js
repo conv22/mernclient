@@ -60,11 +60,6 @@ function Navbar() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/messager">
-              <i className="material-icons">message</i>
-            </NavLink>
-          </li>
-          <li>
             <a className="dropdown-trigger" href="#!" data-target="dropdown1">
               <div className="nav-dropdown">
                 <img

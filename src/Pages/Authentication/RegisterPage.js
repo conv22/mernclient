@@ -14,7 +14,7 @@ import {
 } from './Validation';
 import './materialize-alert.css';
 
-function RegisterPage() {
+function RegisterPage(props) {
   const dispatch = useDispatch();
   const error = useSelector((state) => state.error);
   const [form, setForm] = useState({
@@ -34,6 +34,7 @@ function RegisterPage() {
     data.append('file', file);
     clearErrors();
     dispatch(register(data));
+    return props.history.push('/');
   };
   const changeHandler = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -59,7 +60,7 @@ function RegisterPage() {
                     className="validate"
                     value={form.username}
                     onChange={changeHandler}
-                    validations={[required, minlength]}
+                    validations={[required, minlength(6)]}
                   />
                   <label htmlFor="username" className="active">
                     Username
@@ -76,7 +77,7 @@ function RegisterPage() {
                     className="validate"
                     value={form.password}
                     onChange={changeHandler}
-                    validations={[minlength, required]}
+                    validations={[minlength(6), required]}
                   />
                   <label htmlFor="password" className="active">
                     Password

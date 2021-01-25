@@ -24,7 +24,7 @@ function MainPage() {
     return <Loader />;
   }
   if (error) {
-    return <div>{error}</div>;
+    return <h1 className="center-align">{error.message}</h1>;
   }
   if (posts.length > 0)
     return (
@@ -44,7 +44,13 @@ function MainPage() {
         </div>
       </>
     );
-  return <h1> Hello</h1>;
+  return (
+    <>
+      {' '}
+      <SideNav />
+      <h1 className="center-align"> No posts yet</h1>{' '}
+    </>
+  );
 }
 
 export default MainPage;

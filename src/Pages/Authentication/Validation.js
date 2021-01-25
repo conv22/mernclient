@@ -23,9 +23,16 @@ export const required = (value) => {
 
 export const minlength = (value) => {
   if (value.length < 6) {
-    return createError('Should be at least 6 chars long');
+    return createError('Should be at least 6 long');
   }
 };
+
+export const maxlength = (value) => {
+  if (value.length > 1000) {
+    return createError('Should be less then 1000 chars');
+  }
+};
+
 export const confirmPassword = (value, props, components) => {
   if (value !== components.password[0].value) {
     return createError('Password should match');

@@ -3,11 +3,13 @@ import { useSelector } from 'react-redux';
 import useAxios from '../hooks/axios.hook';
 
 function Post({ post }) {
+  const [totalLikes, setTotalLikes] = useState(0);
   const [liked, setLiked] = useState(false);
   const user = useSelector((state) => state.user);
   const { request } = useAxios();
 
   useEffect(() => {
+    setTotalLikes(post.likes.length);
     if (post.likes.some((like) => like.user === user.user)) {
       return setLiked(true);
     }
@@ -16,9 +18,12 @@ function Post({ post }) {
 
   const likePost = async (id) => {
     try {
-      const like = await request(`/main/${id}/like`, 'post', null);
+      await request(`/main/${id}/like`, 'post', null);
       setLiked(!liked);
-      return like;
+      if (liked) {
+        return setTotalLikes((prev) => prev - 1);
+      }
+      return setTotalLikes((prev) => prev + 1);
     } catch (e) {
       return e;
     }
@@ -55,7 +60,7 @@ function Post({ post }) {
                   favorite
                 </i>
               </button>
-              <span>{liked ? post.likes.length + 1 : post.likes.length}</span>
+              <span>{totalLikes}</span>
             </div>
           </div>
         </div>

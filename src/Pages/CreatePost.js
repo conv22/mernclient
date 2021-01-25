@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
+import Input from 'react-validation/build/input';
+import Textarea from 'react-validation/build/textarea';
+import Form from 'react-validation/build/form';
+import CheckButton from 'react-validation/build/button';
 import useAxios from '../hooks/axios.hook';
+import { required, minlength, maxlength } from './Authentication/Validation';
 import Loader from '../Components/General/Loader';
 
 function CreatePost() {
@@ -22,7 +27,7 @@ function CreatePost() {
     return <Loader />;
   }
   if (error) {
-    return <h1>{error}</h1>;
+    return <h1 className="center-align">{error.message}</h1>;
   }
 
   return (
@@ -33,55 +38,64 @@ function CreatePost() {
             <span className="card-title  center-align blue-text">
               Posting...
             </span>
-            <div className="row">
-              <div className="input-field col s6 offset-s3">
-                <input
-                  type="text"
-                  name="title"
-                  id="title"
-                  className="validate"
-                  onChange={changeHandler}
-                />
-                <label htmlFor="title">Post title</label>
-              </div>
-            </div>
-            <div className="row">
-              <div className="input-field col s6 offset-s3">
-                <textarea
-                  id="textarea1"
-                  name="text"
-                  className="materialize-textarea"
-                  onChange={changeHandler}
-                />
-                <label htmlFor="textarea1">Post description</label>
-              </div>
-            </div>
-            <div className="row">
-              <div className="file-field input-field col s6 offset-s3">
-                <div className="btn blue lighten-2">
-                  <span>Image</span>
-                  <input
-                    type="file"
-                    name="file"
-                    onChange={(e) => setFile(e.target.files[0])}
+            <Form onSubmit={submitHandler}>
+              <div className="row">
+                <div className="input-field col s6 offset-s3">
+                  <Input
+                    type="text"
+                    name="title"
+                    id="title"
+                    className="validate"
+                    value={form.title}
+                    validations={[required, minlength, maxlength]}
+                    onChange={changeHandler}
                   />
-                </div>
-                <div className="file-path-wrapper">
-                  <input className="file-path validate" type="text" />
+                  <label htmlFor="title" className="active">
+                    Post title
+                  </label>
                 </div>
               </div>
-            </div>
-            <div className="row">
-              <div className="col s6 offset-s3 center-align">
-                <button
-                  type="button"
-                  className="btn btn-medium blue lighten-2"
-                  onClick={submitHandler}
-                >
-                  Add post
-                </button>
+              <div className="row">
+                <div className="input-field col s6 offset-s3">
+                  <Textarea
+                    id="textarea1"
+                    name="text"
+                    value={form.text}
+                    className="materialize-textarea"
+                    validations={[required, minlength]}
+                    onChange={changeHandler}
+                  />
+                  <label htmlFor="textarea1" className="active">
+                    Post description
+                  </label>
+                </div>
               </div>
-            </div>
+              <div className="row">
+                <div className="file-field input-field col s6 offset-s3">
+                  <div className="btn blue lighten-2">
+                    <span>Image</span>
+                    <input
+                      type="file"
+                      name="file"
+                      onChange={(e) => setFile(e.target.files[0])}
+                    />
+                  </div>
+                  <div className="file-path-wrapper">
+                    <input className="file-path validate" type="text" />
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col s6 offset-s3 center-align">
+                  <CheckButton
+                    type="submit"
+                    className="btn btn-medium blue lighten-2"
+                  >
+                    Add post
+                  </CheckButton>
+                </div>
+              </div>
+            </Form>
           </div>
         </div>
       </div>

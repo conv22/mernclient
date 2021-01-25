@@ -7,7 +7,6 @@ import ProfilePage from './Pages/ProfilePage';
 import CreatePost from './Pages/CreatePost';
 import PostPage from './Pages/PostPage';
 import UserPage from './Pages/UserPage';
-import MessagerPage from './Pages/MessagerPage';
 import FriendPage from './Pages/FriendPage';
 import GlobalUserPage from './Pages/GlobalUserPage';
 
@@ -28,7 +27,6 @@ const useRoutes = (isAuthenticated) => {
       <Route path="/post/:id" component={PostPage} />
       <Route path="/create-post" exact component={CreatePost} />
       <Route path="/users/:id" component={UserPage} />
-      <Route path="/messager" exact component={MessagerPage} />
       <Route path="/friends" exact component={FriendPage} />
       <Route path="/users" exact component={GlobalUserPage} />
       <Redirect to="/" />
