@@ -31,10 +31,10 @@ function PostPage() {
   return (
     <>
       <div className="row post-page">
-        <div className="col s7">
+        <div className="col m7 s12">
           <img src={post.imageUrl} alt="Post" />
         </div>
-        <div className="col s5">
+        <div className="col m5 s12">
           <span className="post-page-title">{post.title}</span>
           <p className="post-page-p">{post.text}</p>
         </div>

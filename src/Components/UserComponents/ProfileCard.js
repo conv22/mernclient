@@ -4,11 +4,11 @@ import FriendRequestsComponent from './FriendRequestsComponent';
 function UserCard({ user }) {
   return (
     <div className="row user-card">
-      <div className="col s2 user-avi">
+      <div className="col m2 s12 user-avi">
         <img src={user.aviUrl} alt="avi" />
       </div>
 
-      <div className="col s6 user-description">
+      <div className="col m2 s12 user-description">
         <h5>Username : {user.username}</h5>
         <h6>Email: {user.email}</h6>
       </div>

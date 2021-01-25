@@ -18,12 +18,13 @@ function Post({ post }) {
 
   const likePost = async (id) => {
     try {
-      await request(`/main/${id}/like`, 'post', null);
       setLiked(!liked);
       if (liked) {
         return setTotalLikes((prev) => prev - 1);
       }
-      return setTotalLikes((prev) => prev + 1);
+      setTotalLikes((prev) => prev + 1);
+      await request(`/main/${id}/like`, 'post', null);
+      return request;
     } catch (e) {
       return e;
     }

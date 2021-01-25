@@ -49,6 +49,13 @@ img {
   display: flex;
   align-items: center;
 }
+.btn-nav {
+  background: none;
+  border: none;
+}
+.btn-nav :focus {
+  background: none;
+}
 /* Pagination styles */
 .pagination {
   display: flex;

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -72,6 +73,20 @@ function Navbar() {
             </a>
           </li>
         </ul>
+        <ul className="sidenav" id="mobile-demo">
+          <li>
+            <a href="/Profile">Profile</a>
+          </li>
+          <li>
+            <a href="/Friends">Friends</a>
+          </li>
+          <li>
+            <a href="/Posts">Posts</a>
+          </li>
+          <li>
+            <a href="/Users">Users</a>
+          </li>
+        </ul>
       </>
     );
   };
@@ -79,14 +94,15 @@ function Navbar() {
   return (
     <nav>
       <div className="nav-wrapper blue lighten-2" style={{ padding: '0 2rem' }}>
-        <span className="brand-logo">
-          MERN network
-          <a href="/">
-            <i className="material-icons right" style={{ cursor: 'pointer' }}>
-              home
-            </i>
-          </a>
-        </span>
+        <a href="#" data-target="mobile-demo" className="sidenav-trigger">
+          <i className="material-icons">menu</i>
+        </a>
+        <a href="/" className="brand-logo center">
+          <i className="material-icons right" style={{ cursor: 'pointer' }}>
+            home
+          </i>
+        </a>
+
         {navRoutes()}
       </div>
     </nav>

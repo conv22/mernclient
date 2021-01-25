@@ -22,6 +22,7 @@ function UserCard({ user }) {
     window.location.reload();
     return response;
   };
+
   const buttons = () => {
     if (
       user.friends.some(
