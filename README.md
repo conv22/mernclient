@@ -1,5 +1,5 @@
 LIVE: https://convmernsocialapp.herokuapp.com/ \
-TEST login: test@gmail.com password: 123456 \
+TEST login: Test@gmail.com password: 123456 \
 BACKEND: https://github.com/conv22/mern-backend
 # Getting Started with Create React App
 
